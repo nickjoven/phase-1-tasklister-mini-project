@@ -1,3 +1,4 @@
+const taskArray = []
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
   
@@ -6,6 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   formSubmit.addEventListener('submit', (event) => {
     // alert("I heard a submit event")
     event.preventDefault();
+
+
+    const addToArray = () => {
+      const userTextBox = document.querySelector("#new-task-description")
+      const userText = userTextBox.value
+      taskArray.push(userText)
+    }
+
+    addToArray();
 
     const createListItem = () => {
       const userTextBox = document.querySelector("#new-task-description")
@@ -33,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
     createListItem();
   
-    const changeMenu = document.querySelectorAll('.dropdownMenu');
+    const changeMenu = document.querySelector('.dropdownMenu');
 
     changeMenu.addEventListener('change', (event) => {
       console.log("Menu changed")})
