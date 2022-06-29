@@ -10,20 +10,26 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const userTextBox = document.querySelector("#new-task-description")
     const userText = userTextBox.value
+    const userObject = {
+      id: taskArray.length,
+      textEntered: userText,
+      priority: false,
+    }
 
     const addToArray = () => {
-      taskArray.push(userText)
+      taskArray.push(userObject)
     }
 
     addToArray();
 
     const createListFromArray = () => {
       const li = document.createElement('li')
-      li.innerText = userText
+      li.innerText = userObject.textEntered
+      li.setAttribute("id", userObject.id)
       const tasksList = document.querySelector("#tasks")
       tasksList.append(li)
       const dropdown = document.createElement('select')
-      dropdown.setAttribute("class", `dropdownMenu${taskArray.length}`)
+      dropdown.setAttribute("id", `dropdownMenu${userObject.id}`)
       li.append(dropdown)
       const highPriority = document.createElement('option')
       highPriority.value = 'high'
@@ -37,10 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
       dropdown.append(highPriority, mediumPriority, lowPriority)
      }
 
-     createListFromArray();
-
-
-
+    createListFromArray();
+    
+    addEventListener('change', (event) => {
+      console.log("Menu changed")
+      console.log(event.target)
+      console.log(event.target.parentElement)
+    })
     // const createListItem = () => {
     //   const userTextBox = document.querySelector("#new-task-description")
     //   const userText = userTextBox.value
