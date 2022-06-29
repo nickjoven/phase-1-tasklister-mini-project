@@ -36,14 +36,14 @@ button {
   box-shadow: 2px 5px 5px #333;
 }
 
-#hP {
+.highPrio {
   color: red
 }
 
-#mP {
+.medPrio {
   color: yellow
 }
 
-#lP {
+.lowPrio {
   color: green
 }
