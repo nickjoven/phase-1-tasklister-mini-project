@@ -1,52 +1,59 @@
-const taskArray = []
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
+  const taskArray = []
   
   
   const formSubmit = document.querySelector("#create-task-form")
-  formSubmit.addEventListener('submit', (event) => {
-    // alert("I heard a submit event")
-    event.preventDefault();
+  const userTextBox = document.querySelector("#new-task-description")
+  const tasksList = document.querySelector("#tasks")
+  
+    formSubmit.addEventListener('submit', (event) => {
+      // alert("I heard a submit event")
+      event.preventDefault();
+      const userText = userTextBox.value
+      const userObject = {
+        id: taskArray.length,
+        textEntered: userText,
+        priority: "highPrio",
+        precedence: 0
+      }
+
+      const addToArray = () => {
+        taskArray.push(userObject)
+        userTextBox.value = null
+      }
+      
+      addToArray();
+
+      const createListFromArray = () => {
+        const li = document.createElement('li')
+        li.innerText = userObject.textEntered
+        li.setAttribute("id", userObject.id + 1)
+        li.className = "highPrio"
+        tasksList.append(li)
+        const dropdown = document.createElement('select')
+        dropdown.setAttribute("class", `dropdownMenu`)
+        li.append(dropdown)
+        const highPriority = document.createElement('option')
+        highPriority.value = 'highPrio'
+        highPriority.innerText = 'High'
+        const mediumPriority = document.createElement('option')
+        mediumPriority.value = 'medPrio'
+        mediumPriority.innerText = 'Medium'
+        const lowPriority = document.createElement('option')
+        lowPriority.value = 'lowPrio'
+        lowPriority.innerText = 'Low'
+        dropdown.append(highPriority, mediumPriority, lowPriority)
+        const removeBtn = document.createElement('button')
+        removeBtn.setAttribute("id", "removeBtn")
+        removeBtn.innerText = "X"
+        li.append(removeBtn)
+
+      }
     
-    const userTextBox = document.querySelector("#new-task-description")
-    const userText = userTextBox.value
-    const userObject = {
-      id: taskArray.length,
-      textEntered: userText,
-      priority: "High",
-      precedence: 0
-    }
-
-    const addToArray = () => {
-      taskArray.push(userObject)
-    }
-
-    addToArray();
-
-    const createListFromArray = () => {
-      const li = document.createElement('li')
-      li.innerText = userObject.textEntered
-      li.setAttribute("id", userObject.id + 1)
-      li.className = "highPrio"
-      const tasksList = document.querySelector("#tasks")
-      tasksList.append(li)
-      const dropdown = document.createElement('select')
-      dropdown.setAttribute("class", `dropdownMenu`)
-      li.append(dropdown)
-      const highPriority = document.createElement('option')
-      highPriority.value = 'highPrio'
-      highPriority.innerText = 'High'
-      const mediumPriority = document.createElement('option')
-      mediumPriority.value = 'medPrio'
-      mediumPriority.innerText = 'Medium'
-      const lowPriority = document.createElement('option')
-      lowPriority.value = 'lowPrio'
-      lowPriority.innerText = 'Low'
-      dropdown.append(highPriority, mediumPriority, lowPriority)
-     }
-
-    createListFromArray();
-    
+      createListFromArray();
+    })
+  
     addEventListener('change', (event) => {
       let changedBlock = event.target
       if (changedBlock.classList.contains("dropdownMenu")) {
@@ -67,15 +74,34 @@ document.addEventListener("DOMContentLoaded", () => {
             currentArray.precedence = 2
         }
       }
-
-
-
-
-
     })
-    
-    
-  })
+  
+    // sort functionality
+    const sortBtn = document.querySelector("#sortBtn")
+
+    sortBtn.addEventListener('click', (event) => {
+      taskArray.sort((a, b) => {
+        return a.precedence - b.precedence;
+      })
+      console.log(taskArray)
+      
+      const entireList = document.querySelector("#tasks")
+      // const listItems = document.querySelectorAll("#myList li")
+
+      while (entireList.hasChildNodes()) {
+        entireList.removeChild(entireList.lastChild)
+      }
+      
+      taskArray.map((element, index) => {
+        let li = document.createElement('li')
+        const liText = taskArray[index].textEntered
+        console.log(taskArray[index])
+        li.innerText = liText
+        tasksList.append(li)
+      })
+      
+      
+    })
 })
 
 // const createListItem = () => {
