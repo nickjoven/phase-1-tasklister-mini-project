@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userObject = {
       id: taskArray.length,
       textEntered: userText,
-      priority: "highPrio",
+      priority: "High",
     }
 
     const addToArray = () => {
@@ -26,19 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = document.createElement('li')
       li.innerText = userObject.textEntered
       li.setAttribute("id", userObject.id + 1)
+      li.className = "highPrio"
       const tasksList = document.querySelector("#tasks")
       tasksList.append(li)
       const dropdown = document.createElement('select')
-      dropdown.setAttribute("id", `dropdownMenu${userObject.id + 1}`)
+      dropdown.setAttribute("class", `dropdownMenu`)
       li.append(dropdown)
       const highPriority = document.createElement('option')
-      highPriority.value = 'high'
+      highPriority.value = 'highPrio'
       highPriority.innerText = 'High'
       const mediumPriority = document.createElement('option')
-      mediumPriority.value = 'medium'
+      mediumPriority.value = 'medPrio'
       mediumPriority.innerText = 'Medium'
       const lowPriority = document.createElement('option')
-      lowPriority.value = 'low'
+      lowPriority.value = 'lowPrio'
       lowPriority.innerText = 'Low'
       dropdown.append(highPriority, mediumPriority, lowPriority)
      }
@@ -46,14 +47,28 @@ document.addEventListener("DOMContentLoaded", () => {
     createListFromArray();
     
     addEventListener('change', (event) => {
-      // console.log("Menu changed")
-      console.log(event.target.value)
-      let num = (parseInt(event.target.parentElement.id) - 1)
-      if (typeof (num) == 'number') {
-        let useNum = num + 1
-        console.log(taskArray[num])
-
+      let changedBlock = event.target
+      // console.log(changedBlock)
+      if (changedBlock.classList.contains("dropdownMenu")) {
+        // console.log("please look at me")
+        // console.log(event.target.value)
+        let parentLi = changedBlock.parentElement
+        let idNum = parseInt(parentLi.id)
+        // console.log(typeof(idNum))
+        // console.log(idNum)
+        let arrayNum = ((parseInt(idNum)) - 1)
+        if (changedBlock.value !== parentLi.id) {
+          taskArray[arrayNum].priority = changedBlock.value
+          // console.log(taskArray[arrayNum].priority)
+          // console.log(changedBlock.value)
+          changedBlock.parentElement.className = ""
+          changedBlock.parentElement.className = `${changedBlock.value}`
+        }
       }
+
+
+
+
 
     })
     // const createListItem = () => {
