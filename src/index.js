@@ -47,11 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     addEventListener('change', (event) => {
       // console.log("Menu changed")
-      // console.log(event.target)
+      console.log(event.target.value)
       let num = (parseInt(event.target.parentElement.id) - 1)
-      console.log(num);
       if (typeof (num) == 'number') {
+        let useNum = num + 1
         console.log(taskArray[num])
+
       }
 
     })
