@@ -1,6 +1,6 @@
+const taskArray = []
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
-  const taskArray = []
   
   
   const formSubmit = document.querySelector("#create-task-form")
@@ -13,12 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
   event.preventDefault();
   const userText = userTextBox.value
   const userDate = dueDateBox.value
+  const [year, month, day] = userDate.split('-');
+  const fixedDate = [month, day, year].join('/');
   const userObject = {
-    id: taskArray.length,
+  id: taskArray.length,
     textEntered: userText,
     priority: "highPrio",
     precedence: 0,
-    dueDate: userDate,
+    dueDate: fixedDate
   }
 
   const addToArray = () => {
@@ -54,9 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
       event.target.parentElement.remove()
     })
     li.append(removeBtn)
+    const dueDateText = document.createElement('p')
+    if (userObject.dueDate != '//') {
+      dueDateText.innerText = `Due ${userObject.dueDate}`
+    } else dueDateText.innerText = "Due Whenever"
+    li.prepend(dueDateText)
   }
 
     createListFromArray();
+    dueDateBox.value = null
   })
 
   addEventListener('change', (event) => {
@@ -91,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskArray.sort((a, b) => {
       return a.precedence - b.precedence;
     })
-    console.log(taskArray)
+    // console.log(taskArray)
     
     const entireList = document.querySelector("#tasks")
     // const listItems = document.querySelectorAll("#myList li")
@@ -103,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskArray.map((element, index) => {
       let li = document.createElement('li')
       const liText = taskArray[index].textEntered
-      console.log(taskArray[index])
+      // console.log(taskArray[index])
       li.innerText = liText
       tasksList.append(li)
       li.className = taskArray[index].priority
@@ -140,6 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
         event.target.parentElement.remove()
       })
       li.append(removeBtn)
+      const dueDateText = document.createElement('p')
+      if (taskArray[index].dueDate != '//') {
+        dueDateText.innerText = `Due ${taskArray[index].dueDate}`
+      } else dueDateText.innerText = "Due Whenever"
+      li.prepend(dueDateText)
     })
   })
 })
