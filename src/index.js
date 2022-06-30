@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lowPriority.value = 'lowPrio'
     lowPriority.innerText = 'Low'
     dropdown.append(highPriority, mediumPriority, lowPriority)
+    //
     const removeBtn = document.createElement('button')
     removeBtn.className = removeBtn
     removeBtn.innerText = "X"
@@ -61,6 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
       dueDateText.innerText = `Due ${userObject.dueDate}`
     } else dueDateText.innerText = "Due Whenever"
     li.prepend(dueDateText)
+    //
+    const editBtn = document.createElement('button')
+    editBtn.className = editBtn
+    editBtn.innerText = "edit"
+    editBtn.onclick = () => {
+      li.contentEditable = !li.isContentEditable
+      if (editBtn.innerText === "edit") {
+        editBtn.innerText = "save"
+      } else editBtn.innerText = "edit"
+  }  
+    li.append(editBtn)
   }
 
     createListFromArray();
@@ -154,6 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else dueDateText.innerText = "Due Whenever"
       li.prepend(dueDateText)
     })
+  
+
+
   })
 })
 
