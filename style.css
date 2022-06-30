@@ -30,7 +30,7 @@ button {
 #list {
   margin: 10px;
   border: 1px solid #333;
-  background: rgb(136, 136, 136);
+  background: rgb(107, 107, 107);
   padding: 15px 20px 18px 18px;
   border-radius: 5px;
   box-shadow: 2px 5px 5px #333;
@@ -45,7 +45,7 @@ button {
 }
 
 .lowPrio {
-  color: green
+  color: rgb(0, 180, 0)
 }
 
 .liDiv {
