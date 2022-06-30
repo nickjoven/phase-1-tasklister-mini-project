@@ -28,13 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       li.setAttribute("id", userObject.id + 1)
       li.className = "highPrio"
       const tasksList = document.querySelector("#tasks")
-      const div = document.createElement('div')
-      tasksList.append(div)
+      tasksList.append(li)
       const dropdown = document.createElement('select')
       dropdown.setAttribute("class", `dropdownMenu`)
       li.append(dropdown)
-      div.append(li)
-      div.className = "liDiv"
       const highPriority = document.createElement('option')
       highPriority.value = 'highPrio'
       highPriority.innerText = 'High'
