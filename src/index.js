@@ -6,19 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const formSubmit = document.querySelector("#create-task-form")
   const userTextBox = document.querySelector("#new-task-description")
   const tasksList = document.querySelector("#tasks")
-  let counter = 0
+  const dueDateBox = document.querySelector("#new-task-due-date")
 
   formSubmit.addEventListener('submit', (event) => {
     // alert("I heard a submit event")
-    counter++
-    console.log(counter)
   event.preventDefault();
   const userText = userTextBox.value
+  const userDate = dueDateBox.value
   const userObject = {
     id: taskArray.length,
     textEntered: userText,
     priority: "highPrio",
-    precedence: 0
+    precedence: 0,
+    dueDate: userDate,
   }
 
   const addToArray = () => {
