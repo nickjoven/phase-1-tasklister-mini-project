@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: taskArray.length,
       textEntered: userText,
       priority: "High",
+      precedence: 0
     }
 
     const addToArray = () => {
@@ -48,21 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
     
     addEventListener('change', (event) => {
       let changedBlock = event.target
-      // console.log(changedBlock)
       if (changedBlock.classList.contains("dropdownMenu")) {
         // console.log("please look at me")
-        // console.log(event.target.value)
         let parentLi = changedBlock.parentElement
         let idNum = parseInt(parentLi.id)
-        // console.log(typeof(idNum))
-        // console.log(idNum)
         let arrayNum = ((parseInt(idNum)) - 1)
+        let currentArray = taskArray[arrayNum]
         if (changedBlock.value !== parentLi.id) {
-          taskArray[arrayNum].priority = changedBlock.value
-          // console.log(taskArray[arrayNum].priority)
-          // console.log(changedBlock.value)
+          currentArray.priority = changedBlock.value
           changedBlock.parentElement.className = ""
           changedBlock.parentElement.className = `${changedBlock.value}`
+          if (changedBlock.value == 'highPrio') {
+            currentArray.precedence = 0
+          } else if (changedBlock.value == 'medPrio') {
+            currentArray.precedence = 1
+          } else if (changedBlock.value == 'lowPrio')
+            currentArray.precedence = 2
         }
       }
 
@@ -71,38 +73,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     })
-    // const createListItem = () => {
-    //   const userTextBox = document.querySelector("#new-task-description")
-    //   const userText = userTextBox.value
-      // const li = document.createElement('li')
-      // li.innerText = userText
-    //   li.setAttribute("class", "highPrio")
-    //   const tasksList = document.querySelector("#tasks")
-    //   tasksList.append(li)
-    //   // adding dropdown
-      // const dropdown = document.createElement('select')
-      // dropdown.setAttribute("class", "dropdownMenu")
-      // li.append(dropdown)
-      // const highPriority = document.createElement('option')
-      // highPriority.value = 'high'
-      // highPriority.innerText = 'High'
-      // const mediumPriority = document.createElement('option')
-      // mediumPriority.value = 'medium'
-      // mediumPriority.innerText = 'Medium'
-      // const lowPriority = document.createElement('option')
-      // lowPriority.value = 'low'
-      // lowPriority.innerText = 'Low'
-      // dropdown.append(highPriority, mediumPriority, lowPriority)
-    // }
- 
+    
+    
+  })
+})
+
+// const createListItem = () => {
+//   const userTextBox = document.querySelector("#new-task-description")
+//   const userText = userTextBox.value
+  // const li = document.createElement('li')
+  // li.innerText = userText
+//   li.setAttribute("class", "highPrio")
+//   const tasksList = document.querySelector("#tasks")
+//   tasksList.append(li)
+//   // adding dropdown
+  // const dropdown = document.createElement('select')
+  // dropdown.setAttribute("class", "dropdownMenu")
+  // li.append(dropdown)
+  // const highPriority = document.createElement('option')
+  // highPriority.value = 'high'
+  // highPriority.innerText = 'High'
+  // const mediumPriority = document.createElement('option')
+  // mediumPriority.value = 'medium'
+  // mediumPriority.innerText = 'Medium'
+  // const lowPriority = document.createElement('option')
+  // lowPriority.value = 'low'
+  // lowPriority.innerText = 'Low'
+  // dropdown.append(highPriority, mediumPriority, lowPriority)
+// }
+
 //     createListItem();
-  
+
 //     const changeMenu = document.querySelector('.dropdownMenu');
 
 //     changeMenu.addEventListener('change', (event) => {
 //       console.log("Menu changed")})
 //     changeMenu.parentElement.className = ""
-
-
-})
-})

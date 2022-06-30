@@ -51,12 +51,8 @@ button {
 .liDiv {
     justify-content: left;
 }
-li {
-  justify-content: left;
-  display: inline-block;
-  margin: auto;
-}
 
 select {
   justify-content: right;
 }
+
