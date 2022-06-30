@@ -7,7 +7,7 @@ html {
 body {
   min-height: 100%;
   min-width: 100%;
-  background: linear-gradient(pink, violet);
+  background: linear-gradient(rgb(192, 219, 255), rgb(130, 146, 238));
 }
 
 button {
@@ -30,7 +30,7 @@ button {
 #list {
   margin: 10px;
   border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgb(136, 136, 136);
   padding: 15px 20px 18px 18px;
   border-radius: 5px;
   box-shadow: 2px 5px 5px #333;
@@ -46,4 +46,17 @@ button {
 
 .lowPrio {
   color: green
+}
+
+.liDiv {
+    justify-content: left;
+}
+li {
+  justify-content: left;
+  display: inline-block;
+  margin: auto;
+}
+
+select {
+  justify-content: right;
 }
