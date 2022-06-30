@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       
       addToArray();
 
+      const updateLi = (LIIII, ARRAY, OBJECT) => {}
+
       const createListFromArray = () => {
         const li = document.createElement('li')
         li.innerText = userObject.textEntered
@@ -98,6 +100,38 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(taskArray[index])
         li.innerText = liText
         tasksList.append(li)
+        li.className = taskArray[index].priority
+        li.setAttribute("id", parseInt(index + 1))
+        //
+        const dropdown = document.createElement('select')
+        let dropdownClass = `dropdownMenu`
+        dropdown.setAttribute("class", dropdownClass )
+        li.append(dropdown)
+        const highPriority = document.createElement('option')
+        highPriority.value = 'highPrio'
+        highPriority.innerText = 'High'
+        const mediumPriority = document.createElement('option')
+        mediumPriority.value = 'medPrio'
+        mediumPriority.innerText = 'Medium'
+        const lowPriority = document.createElement('option')
+        lowPriority.value = 'lowPrio'
+        lowPriority.innerText = 'Low'
+        dropdown.append(highPriority, mediumPriority, lowPriority)
+        //
+        li.className = taskArray[index].priority
+        if (taskArray[index].priority == 'highPrio') {
+          highPriority.setAttribute("selected", "High")
+        } else if (taskArray[index].priority == 'medPrio') {
+          mediumPriority.setAttribute("selected", "Medium")
+        } else if (taskArray[index].priority == 'lowPrio') {
+          lowPriority.setAttribute("selected", "low")
+        }
+        //
+        const removeBtn = document.createElement('button')
+        removeBtn.setAttribute("id", "removeBtn")
+        removeBtn.innerText = "X"
+        li.append(removeBtn)
+        
       })
       
       
