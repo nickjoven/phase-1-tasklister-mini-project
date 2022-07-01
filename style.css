@@ -1,102 +1,70 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Comic Sans MS";
+}
+
+html, body {
+  padding: 0;
+  margin: 0
 }
 
 html {
   font-size: 52.5%
   font-family: "Titillium Web", sans-serif;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgb(203, 225, 255), rgb(90, 67, 221));
-  color: #eee;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.calendar {
-  width: 45rem;
-  height: 52rem;
-  background-color: #222227;
-  box-shadow: 0 0.5rem  3rem rgba(0, 0, 0, 0, 4);
-}
-
-.month {
-  width: 100%;
-  height: 12rem;
-  background-color: rgb(43, 30, 102);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem;
-  text-align: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0, 0.5);
-  letter-spacing: 0.5rem;
-}
-
-.month i {
-  font-size: 1.6rem;
-}
-
-.weekdays {
-  width: 100%;
-  height: 5rem;
-  padding: 0.04rem;
-  display: flex;
-  align-items: center;
-}
-
-.weekdays div {
-  font-size: .8rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  width: calc(44.2rem/7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0, 0.5);
+  height: 100vh;
 }
 
 body {
-  background: linear-gradient(rgb(206, 192, 255), rgb(168, 130, 238));
+  
+  min-height: 100%;
 }
+
+
+
 
 button {
-  font-size: 7px;
+  font-size: 10px;
 }
 
+h2 {
+  letter-spacing: .2rem;
+  text-align: center;
+}
 #main-content {
+  background-image: linear-gradient(rgb(206, 192, 255), rgb(122, 63, 231));
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   flex-direction: column;
   border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.3);
   padding: 15px 20px 18px 18px;
   border-radius: 5px;
   box-shadow: 2px 5px 5px #333;
+  min-height: 100vh;
 }
 
 #list {
   margin: 10px;
   border: 1px solid #333;
-  background: rgb(107, 107, 107);
+  background: rgba(53, 39, 102, 0.76);
   padding: 15px 20px 18px 18px;
   border-radius: 5px;
   box-shadow: 2px 5px 5px #333;
+  color: #eee;
+  width: 60%;
 }
 
+.li-container {
+  max-width: 80%;
+}
+
+#tasks {
+  display: block;
+}
 .highPrio {
   color: red;
   position: relative;
-  right: -50px;
 }
 
 .medPrio {
@@ -109,52 +77,6 @@ button {
     position: relative;
 }
 
-.days {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.2rem;
-}
-
-.days div {
-  font-size: .8rem;
-  margin: 0.3rem;
-  width: calc(40.4rem/7);
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0, 0.5);
-}
-
-.days div:hover:not(.today) {
-  background-color: 262626;
-  border: 0.2rem solid #777;
-}
-
-.prev-date, .next-date {
-  opacity: 0.5;
-}
-.today {
-  background-color: rgb(43, 30, 102);
-}
-
 .task-list {
   position: relative;
-  top: -300px;
-  right: -50px;
-  width: 35%;
-}
-
-h2 {
-  letter-spacing: .2em;
-}
-
-#list {
-  background-color: rgba(43, 30, 102, 0.548);
-}
-
-#emptyDiv {
-  margin-right: 200px;
-  margin-left: 200px;
 }
