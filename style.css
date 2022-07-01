@@ -57,6 +57,7 @@ h2 {
 
 .li-container {
   max-width: 80%;
+  list-style: none;
 }
 
 #tasks {
